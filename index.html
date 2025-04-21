@@ -59,6 +59,11 @@
     #downloadBtn:hover {
       background-color: #0056b3;
     }
+    @media print {
+  #downloadBtn {
+    display: none;
+  }
+}
   </style>
 </head>
 <body>
@@ -83,19 +88,26 @@
 
   <button id="downloadBtn" onclick="descargarPDF()">Descargar PDF</button>
 
-  <script>
-    function descargarPDF() {
-      const element = document.getElementById("content");
-      const opt = {
-        margin: 0,
-        filename: 'informe_trivium.pdf',
-        image: { type: 'jpeg', quality: 1 },
-        html2canvas: { scale: 2, useCORS:true },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-      };
-      html2pdf().set(opt).from(element).save();
-    }
-  </script>
+<script>
+  function descargarPDF() {
+    const btn = document.getElementById('downloadBtn');
+    btn.style.display = 'none'; // Oculta el botón durante la exportación
+
+    const element = document.getElementById("content");
+    const opt = {
+      margin: 0,
+      filename: 'informe_trivium.pdf',
+      image: { type: 'jpeg', quality: 0.95 },
+      html2canvas: { scale: 2, useCORS: true },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+      pagebreak: { mode: ['avoid-all'] }
+    };
+
+    html2pdf().set(opt).from(element).save().then(() => {
+      btn.style.display = 'block'; // Vuelve a mostrar el botón
+    });
+  }
+</script>
 </body>
 </html>
 
