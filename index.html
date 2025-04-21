@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Informe Trivium</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+ <script>
+  function descargarPDF() {
+    window.print();
+  }
+</script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <style>
     * {
@@ -59,7 +63,7 @@
     #downloadBtn:hover {
       background-color: #0056b3;
     }
-    @media print {
+@media print {
   #downloadBtn {
     display: none;
   }
@@ -68,7 +72,7 @@
 </head>
 <body>
   <div id="content">
-    <input class="input-text" style="top: 170px; left: 155px;" placeholder="EDITAR Nombre del alumno/a">
+    <input class="input-text" id="nombreAlumno" style="top: 170px; left: 155px;" placeholder="EDITAR Nombre del alumno/a">
     <input class="input-text" style="top: 200px; left: 110px;" placeholder="EDITAR Nivel del alumno/a">
 
     <input class="input-text" style="top: 250px; left: 480px;" placeholder="EDITAR Nota">
@@ -89,24 +93,27 @@
   <button id="downloadBtn" onclick="descargarPDF()">Descargar PDF</button>
 
 <script>
-  function descargarPDF() {
-    const btn = document.getElementById('downloadBtn');
-    btn.style.display = 'none'; // Oculta el botón durante la exportación
+function descargarPDF() {
+  const btn = document.getElementById('downloadBtn');
+  btn.style.display = 'none';
 
-    const element = document.getElementById("content");
-    const opt = {
-      margin: 0,
-      filename: 'informe_trivium.pdf',
-      image: { type: 'jpeg', quality: 0.95 },
-      html2canvas: { scale: 2, useCORS: true },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-      pagebreak: { mode: ['avoid-all'] }
-    };
+  const alumno = document.getElementById('nombreAlumno').value || 'informe_trivium';
+  const nombreLimpio = alumno.trim().replace(/\s+/g, '_').replace(/[^a-zA-Z0-9_]/g, '');
 
-    html2pdf().set(opt).from(element).save().then(() => {
-      btn.style.display = 'block'; // Vuelve a mostrar el botón
-    });
-  }
+  const element = document.getElementById("content");
+  const opt = {
+    margin: 0,
+    filename: `${nombreLimpio}.pdf`,
+    image: { type: 'jpeg', quality: 0.95 },
+    html2canvas: { scale: 2, useCORS: true },
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+    pagebreak: { mode: ['avoid-all'] }
+  };
+
+  html2pdf().set(opt).from(element).save().then(() => {
+    btn.style.display = 'block';
+  });
+}
 </script>
 </body>
 </html>
