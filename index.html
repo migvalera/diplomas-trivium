@@ -42,7 +42,7 @@
       resize: none;
       font-size: 10px;
     }
-    #downloadBtn {
+    #downloadBtn, #printBtn {
       position: fixed;
       bottom: 40px;
       left: 40px;
@@ -56,11 +56,11 @@
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       z-index: 9999;
     }
-    #downloadBtn:hover {
+    #downloadBtn:hover, #printBtn:hover {
       background-color: #0056b3;
     }
     @media print {
-      #downloadBtn {
+      #downloadBtn, #printBtn {
         display: none;
       }
     }
@@ -89,9 +89,18 @@
   <button id="printBtn" onclick="imprimir()">Imprimir</button>
 
 <script>
+  // Ocultar los botones desde el principio
+  window.onload = function() {
+    document.getElementById('downloadBtn').style.display = 'none';
+    document.getElementById('printBtn').style.display = 'none';
+  }
+
   function descargarPDF() {
-    const btn = document.getElementById('downloadBtn');
-    btn.style.display = 'none'; // Oculta el botón durante la exportación
+    // Ocultar el botón de "Descargar PDF" y "Imprimir" antes de guardar el archivo
+    const downloadBtn = document.getElementById('downloadBtn');
+    const printBtn = document.getElementById('printBtn');
+    downloadBtn.style.display = 'none'; // Oculta el botón "Descargar PDF"
+    printBtn.style.display = 'none';    // Oculta el botón "Imprimir"
 
     const element = document.getElementById("content");
     const opt = {
@@ -104,13 +113,18 @@
     };
 
     html2pdf().set(opt).from(element).save().then(() => {
-      btn.style.display = 'block'; // Vuelve a mostrar el botón
+      // Mostrar los botones nuevamente después de la descarga del PDF
+      downloadBtn.style.display = 'block';
+      printBtn.style.display = 'block';
     });
   }
 
   function imprimir() {
-    const btn = document.getElementById('downloadBtn');
-    btn.style.display = 'none'; // Oculta el botón durante la impresión
+    // Ocultar los botones durante la impresión
+    const downloadBtn = document.getElementById('downloadBtn');
+    const printBtn = document.getElementById('printBtn');
+    downloadBtn.style.display = 'none'; // Oculta el botón "Descargar PDF"
+    printBtn.style.display = 'none';    // Oculta el botón "Imprimir"
 
     window.print(); // Abre la ventana de impresión del navegador
   }
