@@ -59,14 +59,6 @@
     #printBtn:hover {
       background-color: #0056b3;
     }
-    
-/*
-     @media print {
-      #printBtn {
-        display: none;
-      }
-    }
-*/
 
   </style>
 </head>
@@ -93,7 +85,7 @@
   // Función para imprimir sin mostrar los botones
   function imprimir() {
     const printBtn = document.getElementById('printBtn');
-    printBtn.style.display = 'none'; // Oculta el botón de impresión
+   /* printBtn.style.display = 'none';*/ // Oculta el botón de impresión
 
     window.print(); // Llama a la función de impresión del navegador
   }
