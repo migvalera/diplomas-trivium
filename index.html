@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Informe Trivium</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <style>
     * {
@@ -51,7 +50,7 @@
       border: none;
       padding: 12px 24px;
       font-size: 16px;
-      border-radius: 16px; /* Bordes redondeados de 16px */
+      border-radius: 16px;
       cursor: pointer;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       z-index: 9999;
@@ -59,7 +58,27 @@
     #printBtn:hover {
       background-color: #0056b3;
     }
+    .aviso {
+      position: fixed;
+      bottom: 100px;
+      right: 100px;
+      background: #fff8dc;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 4px rgba(0,0,0,0.2);
+      font-size: 14px;
+      color: #333;
+    }
 
+    @media print {
+      body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      #printBtn, .aviso {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -80,18 +99,19 @@
   </div>
 
   <button id="printBtn" onclick="imprimir()">Imprimir PDF</button>
+  <div class="aviso">🔔 Si no ves el fondo en el PDF, activa “Imprimir fondos” en la configuración de impresión.</div>
 
-<script>
-  // Función para imprimir sin mostrar los botones
-  function imprimir() {
-    const printBtn = document.getElementById('printBtn');
-   /* printBtn.style.display = 'none';*/ // Oculta el botón de impresión
+  <script>
+    function imprimir() {
+      const printBtn = document.getElementById('printBtn');
+      printBtn.style.display = 'none';
 
-    window.print(); // Llama a la función de impresión del navegador
-  }
-</script>
+      window.onafterprint = () => {
+        printBtn.style.display = 'block';
+      };
 
+      window.print();
+    }
+  </script>
 </body>
 </html>
-
-
