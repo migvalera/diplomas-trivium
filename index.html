@@ -23,15 +23,16 @@
     }
     .title-curso {
       position: absolute;
-      top: 8,3%;
-        left: 50%;
-  transform: translateX(-50%);
+      left: 50%;
+      transform: translateX(-50%);
       border: none;
       background: transparent;
       font-family: 'Poppins', sans-serif;
       font-size: 32px;
+      font-weight: bold;
       color: #011549;
       width: 510px;
+      text-align: center;
     }
     .input-text {
       position: absolute;
@@ -94,9 +95,12 @@
   </style>
 </head>
 <body>
-  <h1 class="title-curso">· CURSO 2024/25 ·</h1>
-   <h2 class="title-curso" style="font-weight: bold;">RESULTADOS DEL 2º TRIMESTRE</h2>
   <div id="content">
+    <!-- TÍTULOS dentro del contenedor para que se vean sobre el fondo -->
+    <h1 class="title-curso" style="top: 140px; font-weight: 400;">· CURSO 2024/25 ·</h1>
+    <h2 class="title-curso" style="top: 182px; font-size: 24px;">RESULTADOS DEL 2º TRIMESTRE</h2>
+
+    <!-- INPUTS -->
     <input class="input-text" style="top: 170px; left: 155px;" placeholder="EDITAR Nombre del alumno/a">
     <input class="input-text" style="top: 200px; left: 110px;" placeholder="EDITAR Nivel del alumno/a">
     <input class="input-text" style="top: 250px; left: 480px;" placeholder="EDITAR Nota">
@@ -106,6 +110,7 @@
     <input class="input-text" style="top: 380px; left: 480px;" placeholder="EDITAR Nota">
     <input class="input-text" style="top: 412px; left: 480px;" placeholder="EDITAR Nota">
     <input class="input-text" style="top: 445px; left: 480px;" placeholder="EDITAR Nota">
+
     <textarea class="input-text" style="top: 560px; left: 70px; width: 140px; height: 60px;" placeholder="EDITAR Teacher"></textarea>
     <textarea class="input-text input-box" style="top: 552px; left: 220px; width: 520px; height: 90px;" placeholder="EDITAR Comentario adicional"></textarea>
     <textarea class="input-text" style="top: 660px; left: 70px; width: 140px; height: 62px;" placeholder="EDITAR Teacher"></textarea>
@@ -113,8 +118,10 @@
   </div>
 
   <button id="printBtn" onclick="imprimir()">Imprimir PDF</button>
-  <div class="aviso">🔔 Si no ves bien el PDF, activa “Imprimir fondos” y quita<br>
-    márgenes y headers en la configuración de impresión.</div>
+  <div class="aviso">
+    🔔 Si no ves bien el PDF, activa “Imprimir fondos” y quita<br>
+    márgenes y headers en la configuración de impresión.
+  </div>
 
   <script>
     function imprimir() {
