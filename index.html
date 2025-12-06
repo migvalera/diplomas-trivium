@@ -18,7 +18,7 @@
       background-size: cover;
       background-repeat: no-repeat;
       padding: 40px;
-      background-image: url('https://raw.githubusercontent.com/migvalera/diplomas-trivium/refs/heads/main/bg_navidad.png');
+      background-image: url('https://raw.githubusercontent.com/migvalera/diplomas-trivium/refs/heads/main/bg_navidad1.png');
     }
 
     .title-curso {
@@ -45,11 +45,6 @@
       font-size: 16px;
       color: #011549;
       width: 300px;
-    }
-
-    .input-large {
-      font-size: 24px;
-      width: 600px;
     }
 
     .input-box {
@@ -86,16 +81,16 @@
       z-index: 9999;
     }
 
-    #printBtn:hover, #switchBtn:hover {
-      background-color: #0056b3;
-    }
-
     #switchBtn {
       bottom: 90px;
     }
 
     #printBtn {
       bottom: 40px;
+    }
+
+    #printBtn:hover, #switchBtn:hover {
+      background-color: #0056b3;
     }
 
     .aviso {
@@ -131,10 +126,21 @@
     <!-- INPUTS -->
     <input class="input-text" style="top: 170px; left: 155px;" placeholder="EDITAR Nombre del alumno/a">
 
-    <input class="input-text" style="top: 200px; left: 110px;" placeholder="EDITAR Nivel del alumno/a">
+    <!-- NIVEL: editable en normal -->
+    <input id="nivelInput" class="input-text"
+        style="top: 200px; left: 110px;"
+        placeholder="EDITAR Nivel del alumno/a">
 
-    <!-- ESTE ES EL TERCER INPUT QUE SE OCULTA EN MODO REDUCIDO -->
-    <input id="nota3" class="input-text" style="top: 250px; left: 480px; width: 100px;" placeholder="EDITAR Nota">
+    <!-- NIVEL: fijo en reducido -->
+    <div id="nivelFijo" class="input-text"
+        style="top: 200px; left: 110px; display:none;">
+      Starters 1
+    </div>
+
+    <!-- TERCER INPUT (se oculta en modo reducido) -->
+    <input id="nota3" class="input-text"
+        style="top: 250px; left: 480px; width: 100px;"
+        placeholder="EDITAR Nota">
 
     <input class="input-text" style="top: 285px; left: 480px; width: 100px;" placeholder="EDITAR Nota">
     <input class="input-text" style="top: 315px; left: 480px; width: 100px;" placeholder="EDITAR Nota">
@@ -145,13 +151,14 @@
 
     <textarea class="input-text" style="top: 555px; left: 70px; width: 140px; height: 106px;" placeholder="EDITAR Teacher"></textarea>
     <textarea class="input-text input-box" style="top: 555px; left: 220px; width: 512px; height: 106px;" placeholder="EDITAR Comentario adicional"></textarea>
+
     <textarea class="input-text" style="top: 682px; left: 70px; width: 140px; height: 106px;" placeholder="EDITAR Teacher"></textarea>
     <textarea class="input-text input-box" style="top: 682px; left: 220px; width: 512px; height: 106px;" placeholder="EDITAR Comentario adicional"></textarea>
 
     <div class="bloque-final">
       Terminamos el primer trimestre muy contentos con el trabajo realizado y el esfuerzo que habéis hecho alumnos y familias.<br><br>
       ¡Gracias por vuestra confianza y nos vemos en 2026!
-      Esperamos que disfrutéis de estos días junto a vuestros seres queridos. 
+      Esperamos que disfrutéis de estos días junto a vuestros seres queridos.
       No olvidéis que nos volvemos a partir del jueves 8 de enero.<br><br>
       <span style="font-weight: 600;">¡Feliz navidad y próspero 2026!</span>
     </div>
@@ -173,20 +180,32 @@
   function cambiarModo() {
     const content = document.getElementById("content");
     const nota3 = document.getElementById("nota3");
+    const nivelInput = document.getElementById("nivelInput");
+    const nivelFijo = document.getElementById("nivelFijo");
     const switchBtn = document.getElementById("switchBtn");
 
     reducido = !reducido;
 
     if (reducido) {
       content.style.backgroundImage =
-        "url('https://raw.githubusercontent.com/migvalera/diplomas-trivium/refs/heads/main/bg_starters.png')";
+        "url('https://raw.githubusercontent.com/migvalera/diplomas-trivium/refs/heads/main/bg_starters1.png')";
+
       nota3.style.display = "none";
-      switchBtn.textContent = "Cambiar a Normal";
+
+      nivelInput.style.display = "none";
+      nivelFijo.style.display = "block";
+
+      switchBtn.textContent = "Cambiar a Starters";
     } else {
       content.style.backgroundImage =
-        "url('https://raw.githubusercontent.com/migvalera/diplomas-trivium/refs/heads/main/bg_navidad.png')";
+        "url('https://raw.githubusercontent.com/migvalera/diplomas-trivium/refs/heads/main/bg_navidad1.png')";
+
       nota3.style.display = "block";
-      switchBtn.textContent = "Cambiar a Starters";
+
+      nivelInput.style.display = "block";
+      nivelFijo.style.display = "none";
+
+      switchBtn.textContent = "Cambiar a Normal";
     }
   }
 
