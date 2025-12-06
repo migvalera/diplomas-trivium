@@ -159,7 +159,7 @@
   </div>
 
   <!-- BOTONES -->
-  <button id="switchBtn" onclick="cambiarModo()">Cambiar Starters/Normal</button>
+  <button id="switchBtn" onclick="cambiarModo()">Cambiar a Starters</button>
   <button id="printBtn" onclick="imprimir()">Imprimir PDF</button>
 
   <div class="aviso">
@@ -181,12 +181,12 @@
       content.style.backgroundImage =
         "url('https://raw.githubusercontent.com/migvalera/diplomas-trivium/refs/heads/main/bg_starters.png')";
       nota3.style.display = "none";
-      switchBtn.textContent = "Cambiar a versión normal";
+      switchBtn.textContent = "Cambiar a Normal";
     } else {
       content.style.backgroundImage =
         "url('https://raw.githubusercontent.com/migvalera/diplomas-trivium/refs/heads/main/bg_navidad.png')";
       nota3.style.display = "block";
-      switchBtn.textContent = "Cambiar a versión reducida";
+      switchBtn.textContent = "Cambiar a Starters";
     }
   }
 
