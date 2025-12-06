@@ -67,7 +67,7 @@
       line-height: 1.5;
     }
 
-    #printBtn{
+    #printBtn, #switchBtn {
       position: fixed;
       right: 100px;
       background-color: #007BFF;
@@ -81,17 +81,9 @@
       z-index: 9999;
     }
 
-  #switchBtn {
-border: 2px solid #007BFF;
-color: #007BFF;
-background: transparent;
-padding: 8px 12px;
-border-radius: 6px;
-cursor: pointer;
-font-size: 14px;
-margin-bottom: 10px;
-    bottom: 90px;
-}
+    #switchBtn {
+      bottom: 90px;
+    }
 
     #printBtn {
       bottom: 40px;
@@ -203,7 +195,7 @@ margin-bottom: 10px;
       nivelInput.style.display = "none";
       nivelFijo.style.display = "block";
 
-      switchBtn.textContent = "Cambiar a Starters";
+      switchBtn.textContent = "Cambiar a Normal";
     } else {
       content.style.backgroundImage =
         "url('https://raw.githubusercontent.com/migvalera/diplomas-trivium/refs/heads/main/bg_navidad1.png')";
@@ -213,7 +205,7 @@ margin-bottom: 10px;
       nivelInput.style.display = "block";
       nivelFijo.style.display = "none";
 
-      switchBtn.textContent = "Cambiar a Normal";
+      switchBtn.textContent = "Cambiar a Starters";
     }
   }
 
