@@ -1,0 +1,188 @@
+/* =========================
+   Reset y base tipogr�fica
+   ========================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* =========================
+   Lienzo A4 principal
+   ========================= */
+#content {
+  position: relative;
+  width: 210mm;
+  height: 297mm;
+  padding: 40px;
+  background-image: url('./reporte.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* =========================
+   T�tulos
+   ========================= */
+.title-curso {
+  position: absolute;
+  left: 50%;
+  width: 510px;
+  border: none;
+  background: transparent;
+  transform: translateX(-50%);
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #011549;
+}
+
+sup {
+  font-size: 15px;
+}
+
+/* =========================
+   Campos editables
+   ========================= */
+.input-text {
+  position: absolute;
+  width: 100px;
+  border: none;
+  background: transparent;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: #011549;
+}
+
+.input-text-cursiva {
+  position: absolute;
+  width: 200px;
+  border: none;
+  background: transparent;
+  font-family: 'Poppins', sans-serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 14px;
+  color: #526082;
+}
+
+.input-box {
+  resize: none;
+  padding: 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.6);
+  font-size: 11.5px;
+}
+
+/* =========================
+   Mensaje final del informe
+   ========================= */
+.bloque-final {
+  position: absolute;
+  right: 70px;
+  bottom: 150px;
+  width: 420px;
+  text-align: left;
+  line-height: 1.5;
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  color: #011549;
+}
+
+/* =========================
+   Botones de acci�n
+   ========================= */
+#printBtn,
+#switchBtn {
+  position: fixed;
+  right: 100px;
+  z-index: 9999;
+  border: none;
+  border-radius: 16px;
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#switchBtn.button-secondary {
+  border: 1px solid #007bff;
+  background-color: #fff;
+  color: #007bff;
+}
+
+#switchBtn {
+  bottom: 90px;
+}
+
+#printBtn {
+  bottom: 40px;
+}
+
+#printBtn:hover,
+#switchBtn:hover {
+  background-color: #0056b3;
+}
+
+#switchBtn.button-secondary:hover {
+  background-color: #f4f6fb;
+}
+
+/* =========================
+   Aviso lateral
+   ========================= */
+.aviso {
+  position: fixed;
+  right: 100px;
+  bottom: 140px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #fff8dc;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  font-size: 10px;
+  color: #333;
+}
+
+.selector-fondos {
+  position: fixed;
+  right: 100px;
+  bottom: 210px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.selector-fondos a {
+  font-size: 12px;
+  color: #007bff;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.selector-fondos a:hover {
+  color: #0056b3;
+}
+
+/* =========================
+   Reglas de impresi�n
+   ========================= */
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #printBtn,
+  #switchBtn,
+  .aviso,
+  .selector-fondos {
+    display: none;
+  }
+}
+
