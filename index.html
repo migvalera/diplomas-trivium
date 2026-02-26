@@ -4,234 +4,148 @@
   <meta charset="UTF-8">
   <title>Informe Trivium</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    #content {
-      position: relative;
-      width: 210mm;
-      height: 297mm;
-      background-size: cover;
-      background-repeat: no-repeat;
-      padding: 40px;
-      background-image: url('https://raw.githubusercontent.com/migvalera/diplomas-trivium/refs/heads/main/bg_navidad2.png');
-    }
-
-    .title-curso {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      border: none;
-      background: transparent;
-      font-family: 'Poppins', sans-serif;
-      font-size: 22px;
-      font-weight: bold;
-      color: #011549;
-      width: 510px;
-      text-align: center;
-    }
-
-    sup { font-size: 15px; }
-
-    .input-text {
-      position: absolute;
-      border: none;
-      background: transparent;
-      font-family: 'Poppins', sans-serif;
-      font-size: 16px;
-      color: #011549;
-      width: 100px;
-    }
-
-      .input-text-cursiva {
-      position: absolute;
-      border: none;
-      background: transparent;
-      font-family: 'Poppins', sans-serif;
-      font-style: italic;
-      font-weight: 300
-      font-size: 14px;
-      color: #526082;
-        width: 200px;
-    }
-
-    .input-box {
-      background: rgba(255,255,255,0.6);
-      border-radius: 8px;
-      padding: 8px;
-      resize: none;
-      font-size: 11.5px;
-    }
-
-    .bloque-final {
-      position: absolute;
-      bottom: 170px;
-      right: 70px;
-      width: 420px;
-      font-size: 11px;
-      font-family: 'Poppins', sans-serif;
-      color: #011549;
-      text-align: left;
-      line-height: 1.5;
-    }
-
-    #printBtn, #switchBtn {
-      position: fixed;
-      right: 100px;
-      background-color: #007BFF;
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      font-size: 12px;
-      border-radius: 16px;
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      z-index: 9999;
-    }
-
-    #switchBtn {
-      bottom: 90px;
-    }
-
-    #printBtn {
-      bottom: 40px;
-    }
-
-    #printBtn:hover, #switchBtn:hover {
-      background-color: #0056b3;
-    }
-
-    .aviso {
-      position: fixed;
-      bottom: 140px;
-      right: 100px;
-      background: #fff8dc;
-      padding: 10px;
-      border-radius: 8px;
-      box-shadow: 0 0 4px rgba(0,0,0,0.2);
-      font-size: 10px;
-      color: #333;
-    }
-
-    @media print {
-      body {
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
-      #printBtn, #switchBtn, .aviso {
-        display: none;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+  <!-- Lienzo principal del informe -->
   <div id="content">
 
-    <!-- TÍTULOS -->
-    <h1 class="title-curso" style="top: 70px; font-size: 18px; font-weight: 400;">· CURSO 2025/26 ·</h1>
-    <h2 class="title-curso" style="top: 90px;">RESULTADOS DEL 1<sup>er</sup> TRIMESTRE</h2>
+    <!-- Bloque de t�tulos -->
+    <h1 class="title-curso" style="top: 65px; font-size: 18px; font-weight: 400;">· CURSO 2025/26 ·</h1>
+    <h2 class="title-curso" style="top: 85px;">RESULTADOS DEL 1<sup>er</sup> TRIMESTRE</h2>
 
-    <!-- INPUTS -->
-    <input class="input-text" style="top: 170px; left: 155px; width: 300px;" placeholder="EDITAR Nombre del alumno/a">
+    <!-- Bloque de datos del alumno -->
+    <input class="input-text" style="top: 159px; left: 155px; width: 300px;" placeholder="EDITAR Nombre del alumno/a">
 
-    <!-- NIVEL: editable en normal -->
-    <input id="nivelInput" class="input-text"
-        style="top: 200px; left: 110px; width: 300px"
-        placeholder="EDITAR Nivel del alumno/a">
+    <!-- Nivel editable en modo normal -->
+    <input
+      id="nivelInput"
+      class="input-text"
+      style="top: 189px; left: 110px; width: 300px"
+      placeholder="EDITAR Nivel del alumno/a"
+    >
 
-    <!-- NIVEL: fijo en reducido -->
-    <div id="nivelFijo" class="input-text"
-        style="top: 200px; left: 110px; display:none;">
-      Starters 1
-    </div>
+    <!-- Nivel editable visible solo en modo reducido -->
+    <input
+      id="nivelFijo"
+      class="input-text"
+      style="top: 189px; left: 110px; width: 300px; display: none;"
+      placeholder="EDITAR Starters"
+    >
 
-    <!-- TERCER INPUT (se oculta en modo reducido) -->
-    <input id="nota3" class="input-text"
-        style="top: 250px; left: 480px;"
-        placeholder="EDITAR Nota">
+    <!-- En modo Starters se ocultan la nota semi-bold y la anterior -->
+    <input id="nota3" class="input-text" style="top: 240px; left: 480px;" placeholder="EDITAR Nota">
 
-    <input class="input-text" style="top: 285px; left: 480px;" placeholder="EDITAR Nota">
-    <input class="input-text" style="top: 315px; left: 480px;" placeholder="EDITAR Nota">
-    <input class="input-text" style="top: 348px; left: 480px;" placeholder="EDITAR Nota">
-    <input class="input-text" style="top: 380px; left: 480px;" placeholder="EDITAR Nota">
-    <input class="input-text" style="top: 412px; left: 480px;" placeholder="EDITAR Nota">
-    <input class="input-text-cursiva" style="top: 445px; left: 400px;" placeholder="EDITAR Faltas">
+    <!-- Resto de notas -->
+        <input class="input-text" style="top: 303px; left: 480px;" placeholder="EDITAR Nota">
+        <input class="input-text" style="top: 273px; left: 480px;" placeholder="EDITAR Nota">
+    <input class="input-text" style="top: 336px; left: 480px;" placeholder="EDITAR Nota">
+    <input class="input-text" style="top: 368px; left: 480px;" placeholder="EDITAR Nota">
+    <input class="input-text" style="top: 401px; left: 480px;" placeholder="EDITAR Nota">
+    <input id="notaAnteriorSemiBold" class="input-text" style="top: 432px; left: 480px;" placeholder="EDITAR Nota">
+    <input id="notaSemiBold" class="input-text" style="top: 463px; left: 480px; font-weight: 600;" placeholder="Nota Cambridge">
+    <input id="faltasInput" class="input-text-cursiva" style="top: 496px; left: 400px;" placeholder="EDITAR Faltas">
 
-    <textarea class="input-text" style="top: 555px; left: 70px; width: 140px; height: 32px;" placeholder="EDITAR Teacher"></textarea>
-    <textarea class="input-text input-box" style="top: 555px; left: 220px; width: 512px; height: 106px;" placeholder="EDITAR Comentario adicional"></textarea>
+    <!-- Comentarios de profesorado -->
+    <textarea class="input-text" style="top: 575px; left: 70px; width: 140px; height: 32px;" placeholder="EDITAR Teacher"></textarea>
+    <textarea class="input-text input-box" style="top: 575px; left: 220px; width: 512px; height: 106px;" placeholder="EDITAR Comentario adicional"></textarea>
 
-    <textarea class="input-text" style="top: 682px; left: 70px; width: 140px; height: 32px;" placeholder="EDITAR Teacher"></textarea>
-    <textarea class="input-text input-box" style="top: 682px; left: 220px; width: 512px; height: 106px;" placeholder="EDITAR Comentario adicional"></textarea>
+    <textarea class="input-text" style="top: 702px; left: 70px; width: 140px; height: 32px;" placeholder="EDITAR Teacher"></textarea>
+    <textarea class="input-text input-box" style="top: 702px; left: 220px; width: 512px; height: 106px;" placeholder="EDITAR Comentario adicional"></textarea>
 
-    <div class="bloque-final">
-      Terminamos el primer trimestre muy contentos con el trabajo realizado y el esfuerzo que habéis hecho alumnos y familias.<br><br>
-      ¡Gracias por vuestra confianza y nos vemos en 2026!
+    <!-- Mensaje final del informe -->
+    <div class="bloque-final" contenteditable="true">
+      EDITABLE: Terminamos el primer trimestre muy contentos con el trabajo realizado y el esfuerzo que habéis hecho alumnos y familias.<br><br>
+      Gracias por vuestra confianza y nos vemos en 2026!
       Esperamos que disfrutéis de estos días junto a vuestros seres queridos.
       No olvidéis que nos volvemos a partir del jueves 8 de enero.<br><br>
       <span style="font-weight: 600;">¡Feliz navidad y próspero 2026!</span>
     </div>
-
   </div>
 
-  <!-- BOTONES -->
-  <button id="switchBtn" onclick="cambiarModo()">Cambiar a Starters</button>
-  <button id="printBtn" onclick="imprimir()">🖨️ Imprimir PDF</button>
+  <!-- Acciones de usuario -->
+  <button id="switchBtn" class="button-secondary" onclick="cambiarModo()">Cambiar a Starters</button>
+  <button id="printBtn" onclick="imprimir()">Imprimir PDF</button>
 
+  <!-- Selector de plantilla -->
+  <div class="selector-fondos">
+    <a href="#" onclick="cambiarPlantilla('normal'); return false;">📃 Fondo normal</a>
+    <a href="#" onclick="cambiarPlantilla('navidad'); return false;">🎄 Fondo Navidad</a>
+    <a href="#" onclick="cambiarPlantilla('pascua'); return false;">🐇 Fondo Pascua</a>
+  </div>
+
+  <!-- Ayuda de impresi�n -->
   <div class="aviso">
-    🔔 Si no ves bien el PDF, activa “Imprimir fondos” y quita<br>
+    Si no ves bien el PDF, activa 'Imprimir fondos' y quita<br>
     márgenes y headers en la configuración de impresión.
   </div>
 
-<script>
-  let reducido = false;
+  <script>
+    // Estado global del modo de informe (normal/reducido)
+    let reducido = false;
+    // Fondos disponibles de plantilla
+    const BACKGROUND_REPORTE = "url('./reporte.png')";
+    const BACKGROUND_NAVIDAD = "url('./reporte_navidad.png')";
+    const BACKGROUND_PASCUA = "url('./reporte_pascua.png')";
+    const BACKGROUND_STARTERS = "url('./starters.png')";
+    let backgroundNormalActual = BACKGROUND_REPORTE;
 
-  function cambiarModo() {
-    const content = document.getElementById("content");
-    const nota3 = document.getElementById("nota3");
-    const nivelInput = document.getElementById("nivelInput");
-    const nivelFijo = document.getElementById("nivelFijo");
-    const switchBtn = document.getElementById("switchBtn");
+    function cambiarPlantilla(tipo) {
+      if (tipo === "navidad") {
+        backgroundNormalActual = BACKGROUND_NAVIDAD;
+      } else if (tipo === "pascua") {
+        backgroundNormalActual = BACKGROUND_PASCUA;
+      } else {
+        backgroundNormalActual = BACKGROUND_REPORTE;
+      }
 
-    reducido = !reducido;
-
-    if (reducido) {
-      content.style.backgroundImage =
-        "url('https://raw.githubusercontent.com/migvalera/diplomas-trivium/refs/heads/main/bg_starters1.png')";
-
-      nota3.style.display = "none";
-
-      nivelInput.style.display = "none";
-      nivelFijo.style.display = "block";
-
-      switchBtn.textContent = "Cambiar a Normal";
-    } else {
-      content.style.backgroundImage =
-        "url('https://raw.githubusercontent.com/migvalera/diplomas-trivium/refs/heads/main/bg_navidad2.png')";
-
-      nota3.style.display = "block";
-
-      nivelInput.style.display = "block";
-      nivelFijo.style.display = "none";
-
-      switchBtn.textContent = "Cambiar a Starters";
+      if (!reducido) {
+        document.getElementById("content").style.backgroundImage = backgroundNormalActual;
+      }
     }
-  }
 
-  function imprimir() {
-    const printBtn = document.getElementById('printBtn');
-    printBtn.style.display = 'none';
+    // Cambia entre modo normal y modo Starters conservando el mismo contenido
+    function cambiarModo() {
+      const content = document.getElementById("content");
+      const notaAnteriorSemiBold = document.getElementById("notaAnteriorSemiBold");
+      const notaSemiBold = document.getElementById("notaSemiBold");
+      const faltasInput = document.getElementById("faltasInput");
+      const nivelInput = document.getElementById("nivelInput");
+      const nivelFijo = document.getElementById("nivelFijo");
+      const switchBtn = document.getElementById("switchBtn");
 
-    window.onafterprint = () => {
-      printBtn.style.display = 'block';
-    };
+      reducido = !reducido;
 
-    window.print();
-  }
-</script>
+      if (reducido) {
+        content.style.backgroundImage = BACKGROUND_STARTERS;
+        notaAnteriorSemiBold.style.display = "none";
+        notaSemiBold.style.display = "none";
+        faltasInput.style.top = "432px";
+        nivelInput.style.display = "none";
+        nivelFijo.style.display = "block";
+        switchBtn.textContent = "Cambiar a Normal";
+      } else {
+        content.style.backgroundImage = backgroundNormalActual;
+        notaAnteriorSemiBold.style.display = "block";
+        notaSemiBold.style.display = "block";
+        faltasInput.style.top = "496px";
+        nivelInput.style.display = "block";
+        nivelFijo.style.display = "none";
+        switchBtn.textContent = "Cambiar a Starters";
+      }
+    }
 
+    // Lanza la impresi�n y restaura visibilidad del bot�n al finalizar
+    function imprimir() {
+      const printBtn = document.getElementById("printBtn");
+      printBtn.style.display = "none";
+
+      window.onafterprint = () => {
+        printBtn.style.display = "block";
+      };
+
+      window.print();
+    }
+  </script>
 </body>
 </html>
