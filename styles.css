@@ -24,7 +24,7 @@ body {
 }
 
 /* =========================
-   T�tulos
+   Títulos
    ========================= */
 .title-curso {
   position: absolute;
@@ -101,7 +101,7 @@ sup {
 }
 
 /* =========================
-   Botones de acci�n
+   Botones de acción
    ========================= */
 #printBtn,
 #switchBtn {
@@ -178,7 +178,7 @@ sup {
 }
 
 /* =========================
-   Reglas de impresi�n
+   Reglas de impresión
    ========================= */
 @media print {
   body {
