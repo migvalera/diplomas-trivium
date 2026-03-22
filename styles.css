@@ -103,8 +103,7 @@ sup {
 /* =========================
    Botones de acción
    ========================= */
-#printBtn,
-#switchBtn {
+#printBtn {
   position: fixed;
   right: 100px;
   z-index: 9999;
@@ -118,14 +117,32 @@ sup {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-#switchBtn.button-secondary {
+#modeToggle {
+  position: fixed;
+  right: 100px;
+  bottom: 90px;
+  z-index: 9999;
+  display: flex;
   border: 1px solid #007bff;
+  border-radius: 16px;
+  overflow: hidden;
   background-color: #fff;
-  color: #007bff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-#switchBtn {
-  bottom: 90px;
+.mode-toggle-option {
+  border: none;
+  padding: 12px 24px;
+  background-color: #fff;
+  color: #007bff;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.mode-toggle-option.active {
+  background-color: #007bff;
+  color: #fff;
 }
 
 #printBtn {
@@ -133,11 +150,11 @@ sup {
 }
 
 #printBtn:hover,
-#switchBtn:hover {
+.mode-toggle-option.active:hover {
   background-color: #0056b3;
 }
 
-#switchBtn.button-secondary:hover {
+.mode-toggle-option:hover {
   background-color: #f4f6fb;
 }
 
@@ -187,11 +204,9 @@ sup {
   }
 
   #printBtn,
-  #switchBtn,
+  #modeToggle,
   .aviso,
   .selector-fondos {
     display: none;
   }
 }
-
-
