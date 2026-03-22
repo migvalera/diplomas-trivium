@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Informe Trivium</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=20260322-1">
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
   <!-- Lienzo principal del informe -->
@@ -62,14 +62,17 @@
   </div>
 
   <!-- Acciones de usuario -->
-  <button id="switchBtn" class="button-secondary" onclick="cambiarModo()">Cambiar a Starters</button>
+  <div id="modeToggle" aria-label="Selector de variante de diploma">
+    <button id="toggleNormal" class="mode-toggle-option active" onclick="setModo(false)">Normal</button>
+    <button id="toggleStarters" class="mode-toggle-option" onclick="setModo(true)">Starters</button>
+  </div>
   <button id="printBtn" onclick="imprimir()">Imprimir PDF</button>
 
   <!-- Selector de plantilla -->
   <div class="selector-fondos">
     <a href="#" onclick="cambiarPlantilla('normal'); return false;">📃 Fondo normal</a>
-    <a href="#" onclick="cambiarPlantilla('navidad'); return false;">🎄 Fondo Navidad</a>
     <a href="#" onclick="cambiarPlantilla('pascua'); return false;">🐇 Fondo Pascua</a>
+    <a href="#" onclick="cambiarPlantilla('navidad'); return false;">🎄 Fondo Navidad</a>
   </div>
 
   <!-- Ayuda de impresión -->
@@ -88,6 +91,8 @@
     const BACKGROUND_STARTERS = "url('./starters.png')";
     const BACKGROUND_STARTERS_NAVIDAD = "url('./starters_navidad.png')";
     const BACKGROUND_STARTERS_PASCUA = "url('./starters_pascua.png')";
+    const PLACEHOLDER_NOMBRE_NORMAL = "EDITAR Nombre del alumno/a";
+    const PLACEHOLDER_NOMBRE_STARTERS = "EDITAR Nombre alumno/a Starters";
     let backgroundNormalActual = BACKGROUND_REPORTE;
     let backgroundStartersActual = BACKGROUND_STARTERS;
 
@@ -108,35 +113,47 @@
         : backgroundNormalActual;
     }
 
+    function actualizarToggle() {
+      const toggleNormal = document.getElementById("toggleNormal");
+      const toggleStarters = document.getElementById("toggleStarters");
+
+      toggleNormal.classList.toggle("active", !reducido);
+      toggleStarters.classList.toggle("active", reducido);
+      toggleNormal.setAttribute("aria-pressed", String(!reducido));
+      toggleStarters.setAttribute("aria-pressed", String(reducido));
+    }
+
     // Cambia entre modo normal y modo Starters conservando el mismo contenido
-    function cambiarModo() {
+    function setModo(modoReducido) {
       const content = document.getElementById("content");
       const notaAnteriorSemiBold = document.getElementById("notaAnteriorSemiBold");
       const notaSemiBold = document.getElementById("notaSemiBold");
       const faltasInput = document.getElementById("faltasInput");
+      const nombreInput = document.getElementById("nombreInput");
       const nivelInput = document.getElementById("nivelInput");
       const nivelFijo = document.getElementById("nivelFijo");
-      const switchBtn = document.getElementById("switchBtn");
 
-      reducido = !reducido;
+      reducido = modoReducido;
 
       if (reducido) {
         content.style.backgroundImage = backgroundStartersActual;
         notaAnteriorSemiBold.style.display = "none";
         notaSemiBold.style.display = "none";
         faltasInput.style.top = "432px";
+        nombreInput.placeholder = PLACEHOLDER_NOMBRE_STARTERS;
         nivelInput.style.display = "none";
         nivelFijo.style.display = "block";
-        switchBtn.textContent = "Cambiar a Normal";
       } else {
         content.style.backgroundImage = backgroundNormalActual;
         notaAnteriorSemiBold.style.display = "block";
         notaSemiBold.style.display = "block";
         faltasInput.style.top = "496px";
+        nombreInput.placeholder = PLACEHOLDER_NOMBRE_NORMAL;
         nivelInput.style.display = "block";
         nivelFijo.style.display = "none";
-        switchBtn.textContent = "Cambiar a Starters";
       }
+
+      actualizarToggle();
     }
 
 
@@ -147,6 +164,8 @@
         if (e.key === "Enter") e.preventDefault();
       });
     }
+
+    actualizarToggle();
 
     // Lanza la impresión y restaura visibilidad del botón al finalizar
     function imprimir() {
