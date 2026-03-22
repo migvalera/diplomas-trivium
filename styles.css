@@ -49,17 +49,18 @@ sup {
    ========================= */
 .input-text {
   position: absolute;
-  width: 100px;
+  width: 160px;
   border: none;
   background: transparent;
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
+    text-align: center;
   color: #011549;
 }
 
 .input-text-cursiva {
   position: absolute;
-  width: 200px;
+  width: 160px;
   border: none;
   background: transparent;
   font-family: 'Poppins', sans-serif;
@@ -75,6 +76,13 @@ sup {
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.6);
   font-size: 11.5px;
+  text-align: left;
+}
+
+#nombreInput,
+#nivelInput,
+#nivelFijo {
+  text-align: left;
 }
 
 /* =========================
@@ -83,7 +91,7 @@ sup {
 .bloque-final {
   position: absolute;
   right: 70px;
-  bottom: 150px;
+  bottom: 135px;
   width: 420px;
   text-align: left;
   line-height: 1.5;
@@ -185,4 +193,5 @@ sup {
     display: none;
   }
 }
+
 
