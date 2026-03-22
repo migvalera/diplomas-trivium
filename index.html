@@ -10,13 +10,12 @@
   <!-- Lienzo principal del informe -->
   <div id="content">
 
-    <!-- Bloque de t�tulos -->
+    <!-- Bloque de títulos -->
     <h1 class="title-curso" style="top: 65px; font-size: 18px; font-weight: 400;">· CURSO 2025/26 ·</h1>
-   <h2 class="title-curso" style="top: 85px;" contenteditable="true">RESULTADOS DEL 1<sup>er</sup> TRIMESTRE</h2>
-
+    <h2 id="tituloTrimestre" class="title-curso" style="top: 85px;" contenteditable="true" spellcheck="false">RESULTADOS DEL 2<sup>o</sup> TRIMESTRE</h2>
 
     <!-- Bloque de datos del alumno -->
-    <input class="input-text" style="top: 159px; left: 155px; width: 300px;" placeholder="EDITAR Nombre del alumno/a">
+    <input id="nombreInput" class="input-text" style="top: 159px; left: 155px; width: 300px;" placeholder="EDITAR Nombre del alumno/a">
 
     <!-- Nivel editable en modo normal -->
     <input
@@ -35,17 +34,17 @@
     >
 
     <!-- En modo Starters se ocultan la nota semi-bold y la anterior -->
-    <input id="nota3" class="input-text" style="top: 240px; left: 480px;" placeholder="EDITAR Nota">
+    <input id="nota3" class="input-text" style="top: 240px; left: 410px;" placeholder="EDITAR Nota">
 
     <!-- Resto de notas -->
-        <input class="input-text" style="top: 303px; left: 480px;" placeholder="EDITAR Nota">
-        <input class="input-text" style="top: 273px; left: 480px;" placeholder="EDITAR Nota">
-    <input class="input-text" style="top: 336px; left: 480px;" placeholder="EDITAR Nota">
-    <input class="input-text" style="top: 368px; left: 480px;" placeholder="EDITAR Nota">
-    <input class="input-text" style="top: 401px; left: 480px;" placeholder="EDITAR Nota">
-    <input id="notaAnteriorSemiBold" class="input-text" style="top: 432px; left: 480px;" placeholder="EDITAR Nota">
-    <input id="notaSemiBold" class="input-text" style="top: 463px; left: 480px; font-weight: 600;" placeholder="Nota Cambridge">
-    <input id="faltasInput" class="input-text-cursiva" style="top: 496px; left: 400px;" placeholder="EDITAR Faltas">
+    <input class="input-text" style="top: 273px; left: 410px;" placeholder="EDITAR Nota">
+    <input class="input-text" style="top: 303px; left: 410px;" placeholder="EDITAR Nota">
+    <input class="input-text" style="top: 336px; left: 410px;" placeholder="EDITAR Nota">
+    <input class="input-text" style="top: 368px; left: 410px;" placeholder="EDITAR Nota">
+    <input class="input-text" style="top: 401px; left: 410px;" placeholder="EDITAR Nota">
+    <input id="notaAnteriorSemiBold" class="input-text" style="top: 432px; left: 410px;" placeholder="EDITAR Nota">
+    <input id="notaSemiBold" class="input-text" style="top: 463px; left: 410px; font-weight: 600;" placeholder="Nota Cambridge">
+    <input id="faltasInput" class="input-text-cursiva" style="top: 496px; left: 405px;" placeholder="EDITAR Faltas">
 
     <!-- Comentarios de profesorado -->
     <textarea class="input-text" style="top: 575px; left: 70px; width: 140px; height: 32px;" placeholder="EDITAR Teacher"></textarea>
@@ -56,11 +55,9 @@
 
     <!-- Mensaje final del informe -->
     <div class="bloque-final" contenteditable="true">
-      EDITABLE: Terminamos el primer trimestre muy contentos con el trabajo realizado y el esfuerzo que habéis hecho alumnos y familias.<br><br>
-      Gracias por vuestra confianza y nos vemos en 2026!
-      Esperamos que disfrutéis de estos días junto a vuestros seres queridos.
-      No olvidéis que nos volvemos a partir del jueves 8 de enero.<br><br>
-      <span style="font-weight: 600;">¡Feliz navidad y próspero 2026!</span>
+      Terminamos el segundo trimestre lleno de aprendizajes y retos superados. Queremos felicitar a todos los alumnos por su gran trabajo y constancia y agradecer a las familias su esfuerzo y confianza.<br><br>
+      Se acerca la recta final, pero antes un merecido descanso por Semana Santa. ¡Desconectad, divertíos y recargad las pilas! Nos vemos de vuelta a partir del 6 de abril para afrontar el último trimestre con muchas ganas.<br><br>
+      <span style="font-weight: 600;">¡Disfrutad mucho estos días!</span>
     </div>
   </div>
 
@@ -75,7 +72,7 @@
     <a href="#" onclick="cambiarPlantilla('pascua'); return false;">🐇 Fondo Pascua</a>
   </div>
 
-  <!-- Ayuda de impresi�n -->
+  <!-- Ayuda de impresión -->
   <div class="aviso">
     Si no ves bien el PDF, activa 'Imprimir fondos' y quita<br>
     márgenes y headers en la configuración de impresión.
@@ -89,20 +86,26 @@
     const BACKGROUND_NAVIDAD = "url('./reporte_navidad.png')";
     const BACKGROUND_PASCUA = "url('./reporte_pascua.png')";
     const BACKGROUND_STARTERS = "url('./starters.png')";
+    const BACKGROUND_STARTERS_NAVIDAD = "url('./starters_navidad.png')";
+    const BACKGROUND_STARTERS_PASCUA = "url('./starters_pascua.png')";
     let backgroundNormalActual = BACKGROUND_REPORTE;
+    let backgroundStartersActual = BACKGROUND_STARTERS;
 
     function cambiarPlantilla(tipo) {
       if (tipo === "navidad") {
         backgroundNormalActual = BACKGROUND_NAVIDAD;
+        backgroundStartersActual = BACKGROUND_STARTERS_NAVIDAD;
       } else if (tipo === "pascua") {
         backgroundNormalActual = BACKGROUND_PASCUA;
+        backgroundStartersActual = BACKGROUND_STARTERS_PASCUA;
       } else {
         backgroundNormalActual = BACKGROUND_REPORTE;
+        backgroundStartersActual = BACKGROUND_STARTERS;
       }
 
-      if (!reducido) {
-        document.getElementById("content").style.backgroundImage = backgroundNormalActual;
-      }
+      document.getElementById("content").style.backgroundImage = reducido
+        ? backgroundStartersActual
+        : backgroundNormalActual;
     }
 
     // Cambia entre modo normal y modo Starters conservando el mismo contenido
@@ -118,7 +121,7 @@
       reducido = !reducido;
 
       if (reducido) {
-        content.style.backgroundImage = BACKGROUND_STARTERS;
+        content.style.backgroundImage = backgroundStartersActual;
         notaAnteriorSemiBold.style.display = "none";
         notaSemiBold.style.display = "none";
         faltasInput.style.top = "432px";
@@ -136,7 +139,16 @@
       }
     }
 
-    // Lanza la impresi�n y restaura visibilidad del bot�n al finalizar
+
+    // Evita saltos de línea en el título editable
+    const tituloTrimestre = document.getElementById("tituloTrimestre");
+    if (tituloTrimestre) {
+      tituloTrimestre.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") e.preventDefault();
+      });
+    }
+
+    // Lanza la impresión y restaura visibilidad del botón al finalizar
     function imprimir() {
       const printBtn = document.getElementById("printBtn");
       printBtn.style.display = "none";
