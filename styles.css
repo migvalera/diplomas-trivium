@@ -92,7 +92,7 @@ sup {
 .bloque-final {
   position: absolute;
   right: 70px;
-  bottom: 155px;
+  top: 850px;
   width: 420px;
   text-align: left;
   line-height: 1.5;
