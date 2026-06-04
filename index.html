@@ -89,9 +89,11 @@
     const BACKGROUND_REPORTE = "url('./reporte.png')";
     const BACKGROUND_NAVIDAD = "url('./reporte_navidad.png')";
     const BACKGROUND_PASCUA = "url('./reporte_pascua.png')";
+       const BACKGROUND_VERANO = "url('./reporte_verano.png')";
     const BACKGROUND_STARTERS = "url('./starters.png')";
     const BACKGROUND_STARTERS_NAVIDAD = "url('./starters_navidad.png')";
     const BACKGROUND_STARTERS_PASCUA = "url('./starters_pascua.png')";
+     const BACKGROUND_STARTERS_VERANO = "url('./starters_verano.png')";
     const PLACEHOLDER_NOMBRE_NORMAL = "EDITAR Nombre del alumno/a";
     const PLACEHOLDER_NOMBRE_STARTERS = "EDITAR Nombre alumno/a Starters";
     let backgroundNormalActual = BACKGROUND_REPORTE;
@@ -104,6 +106,9 @@
       } else if (tipo === "pascua") {
         backgroundNormalActual = BACKGROUND_PASCUA;
         backgroundStartersActual = BACKGROUND_STARTERS_PASCUA;
+          } else if (tipo === "verano") {
+        backgroundNormalActual = BACKGROUND_VERANO;
+        backgroundStartersActual = BACKGROUND_STARTERS_VERANO;
       } else {
         backgroundNormalActual = BACKGROUND_REPORTE;
         backgroundStartersActual = BACKGROUND_STARTERS;
